@@ -5,8 +5,6 @@
  */
 package quiz.if2.pkg10119077.ridhwananwarfauzan;
 
-import java.util.Scanner;
-
 /**
  *
  * @author RAF
@@ -25,7 +23,6 @@ public class ServicePrice extends Customer implements ServiceItem{
     
     @Override
     public void displayService() {
-        Scanner input=new Scanner(System.in);
         System.out.println("#*****************************#");
         System.out.println("#****Rock n Roll Haircut****#");
         System.out.println("#********Service List*********#");
@@ -33,23 +30,43 @@ public class ServicePrice extends Customer implements ServiceItem{
         System.out.println("2. Haircut + Hairwash : IDR 55K");
         System.out.println("3. Hairwash Only : IDR 15K");
         System.out.println("#******************************#");
-        System.out.print("Choose(1/2/3): ");
-        input.nextInt();
+        System.out.println("Choose(1/2/3): ");
     }
 
     @Override
     public float getPrice(int serviceItem) {
-        return serviceItem = 45000;
+        float price = 0;
+        
+        switch (serviceItem) {
+            case 1:
+                price = 45000;
+                break;
+            case 2:
+                price = 55000;
+                break;
+            case 3:
+                price = 15000;
+                break;
+        } return price;
     }
 
     @Override
     public boolean checkMemberStatus(String statusMember) {
-        return true;
+        boolean status = false;
+        
+        statusMember = statusMember.toLowerCase();
+        if (statusMember.equals("yes")) {
+            status = true;
+        } return status;
     }
 
     @Override
     public float getScale(boolean isMember, float parServicePrice) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        float sale = 0;
+        
+        if (isMember) {
+            sale = parServicePrice * 10 / 100;
+        } return sale;
     }
     
     public float getTotalPay(float priceService, float discount){

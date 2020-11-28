@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package quiz.if2.pkg10119077.ridhwananwarfauzan;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 /**
  *
  * @author RAF
  */
 public class Customer implements CustomerInvoice{
-    private String name;
-    private String email;
-    private boolean member;
+    String name, email;
+    boolean member;
 
     public String getName() {
         return name;
@@ -37,12 +39,16 @@ public class Customer implements CustomerInvoice{
     public void setMember(boolean member) {
         this.member = member;
     }
-    
-    @Override
-    public String currentTime() {
-        Date objDate=new Date(2018, 10, 30, 06, 46, 31);
-        return currentTime();
-    }
-    
-    
+
+  @Override
+    public String currentTime(){
+          String[]arrDays = {"Sabtu","Minggu","Senin","Selasa","Rabu","Kamis","Jumat"};
+
+        Calendar calendar = Calendar.getInstance();
+        int daysOfWeeks = calendar.get(Calendar.DAY_OF_WEEK); 
+
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
+        Date date = new Date();
+        return arrDays[daysOfWeeks]+", "+dateFormat.format(date);
+}    
 }
